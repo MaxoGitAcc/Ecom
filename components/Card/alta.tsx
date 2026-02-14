@@ -25,6 +25,7 @@ import { StockStatus } from "@/types/enums";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { HeartIcon, HeartOutlineIcon, ShuffleOutlineIcon } from "../icons";
 
 // Props type definition
 type ProductCardProps = {
@@ -95,6 +96,8 @@ function ProductCardInner({
     // Product page URL
     const href = `/${lang}/product/${product.slug || product.id}`;
 
+    const [isFavorite, setIsFavorite] = React.useState(false);
+
     return (
         <article
             itemScope
@@ -128,11 +131,45 @@ function ProductCardInner({
             />
 
             {/* IMAGE SECTION */}
-            <CardContent className="p-0 relative pointer-events-none">
+            <CardContent className="p-0 relative">
                 <div className="relative">
                     <AspectRatio
                         className="overflow-hidden bg-zinc-100 dark:bg-zinc-900/60 rounded-t-2xl relative"
                         ratio={1}>
+
+                        <button type="button" className="absolute right-3 top-3 z-30 h-7 w-7 rounded-full bg-white/90
+                            backdrop-blur shadow-md flex items-center justify-center transition
+                            hover:scale-105 hover:shadow-lg active:scale-95 pointer-events-auto"
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.boxShadow = `0 0 14px ${themeColor}CC`
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.boxShadow = "none"
+                            }}
+                            onClick={() => alert("added to ?????")}
+                            disabled={!isInStock || product.isComingSoon}>
+                                <ShuffleOutlineIcon className={cn(styles.iconDimension, "text-black")} />
+                        </button>
+
+                        <button type="button" className="absolute right-3 top-12 z-30 h-7 w-7 rounded-full bg-white/90
+                            backdrop-blur shadow-md flex items-center justify-center transition
+                            hover:scale-105 hover:shadow-lg active:scale-95 pointer-events-auto"
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.boxShadow = `0 0 14px ${themeColor}CC`
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.boxShadow = "none"
+                            }}
+                            onClick={() => setIsFavorite(prev => !prev)}
+                            disabled={!isInStock || product.isComingSoon}>
+                                {isFavorite ? (
+                                    <HeartIcon className={cn(styles.iconDimension, "text-red-500")} />
+                                ) : (
+                                    <HeartOutlineIcon className={cn(styles.iconDimension, "text-black")} />
+                                )}
+                        </button>
+
+
                         {imageUrl ? (
                             <Image
                                 fill
@@ -232,6 +269,12 @@ function ProductCardInner({
                                     e.stopPropagation();  // Prevent card click
                                     // mock button action
                                     console.log("Add to cart:", product.id);
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.boxShadow = `0 0 14px ${themeColor}CC`
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.boxShadow = "none"
                                 }}
                             >
                                 <ShoppingCart className={cn(styles.iconDimension)} />

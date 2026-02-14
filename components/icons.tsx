@@ -323,3 +323,91 @@ export const EnglishIcon = ({
     </g>
   </svg>
 );
+
+export const HeartIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+    <path
+      d="M12.1 20.3c-.1 0-.2 0-.3-.1C8.14 18.6 2 14.7 2 8.6 2 5.5 4.5 3 7.6 3c1.8 0 3.4.9 4.4 2.3C13 3.9 14.6 3 16.4 3 19.5 3 22 5.5 22 8.6c0 6.1-6.1 10-9.8 11.6-.03.06-.06.1-.1.1z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+export const HeartOutlineIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+    <path
+      d="M12.1 20.3c-.1 0-.2 0-.3-.1C8.14 18.6 2 14.7 2 8.6 2 5.5 4.5 3 7.6 3c1.8 0 3.4.9 4.4 2.3C13 3.9 14.6 3 16.4 3 19.5 3 22 5.5 22 8.6c0 6.1-6.1 10-9.8 11.6-.03.06-.06.1-.1.1z"
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const ShuffleOutlineIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+    {/* Top arrow */}
+    <path
+      d="M3 7h11l2-2m0 0-2-2m2 2H14"
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+
+    {/* Bottom arrow */}
+    <path
+      d="M3 17h11l2-2m0 0-2-2m2 2H14"
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)

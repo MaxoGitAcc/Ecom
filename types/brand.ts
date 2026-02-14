@@ -1,0 +1,34 @@
+export interface BrandImageModel {
+  id: string;
+  brandId: string;
+  imagePath: string;
+  isCover: boolean;
+  displayOrder: number;
+}
+
+import type { EntityTranslations } from "./product";
+
+export interface BrandModel {
+  id: string;
+  name?: string;
+  slug?: string;
+  origin?: string;
+  description?: string;
+  images?: string[];
+  parentId?: string | null; // Parent brand ID for sub-brand hierarchy
+  metaTitle?: string;
+  metaDescription?: string;
+  metaKeywords?: string;
+  translations?: EntityTranslations;
+}
+
+// Helper type for building brand tree
+export interface BrandTreeNode extends BrandModel {
+  children: BrandTreeNode[];
+}
+
+export function getBrandCoverImageUrl(images: string[] | undefined): string | undefined {
+  if (!images || images.length === 0) return undefined;
+
+  return images[0];
+}
